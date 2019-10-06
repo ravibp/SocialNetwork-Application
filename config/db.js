@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
 const config = require('config');
-const db = "mongodb+srv://ravi:ravi>@cluster-socialnetwork-9f30o.mongodb.net/admin?retryWrites=true&w=majority&readPreference=secondary&replicaSet=your_replSet_name&ssl=true"
 
-//  config.get('mongoURI');
+const db = config.get('mongoURI');
 
 
 

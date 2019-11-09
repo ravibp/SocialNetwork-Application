@@ -12,7 +12,6 @@ const ProfileGithub = ({ username, getGithubRepos, repos }) => {
   return (
     <div className='profile-github'>
       <h2 className='text-primary my-1'>Github Repos</h2>
-      <h5>Click on the repos to checkout the code on github!</h5>
       {repos === null ? (
         <Spinner />
       ) : (

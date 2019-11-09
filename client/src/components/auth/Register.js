@@ -1,6 +1,5 @@
 import React, { Fragment, useState } from 'react';
-// import axios from 'axios';
-import { connect } from 'react-reduX';
+import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import { setAlert } from '../../actions/alert';
 import { register } from '../../actions/auth';
@@ -18,34 +17,13 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
 
   const onChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
+
   const onSubmit = async e => {
     e.preventDefault();
     if (password !== password2) {
-      setAlert('Oops! Did you enter same password as above?', 'danger');
+      setAlert('Passwords do not match', 'danger');
     } else {
       register({ name, email, password });
-
-      // const newUser = {
-      //   name,
-      //   email,
-      //   password
-      // };
-
-      // try {
-      //   const config = {
-      //     headers: {
-      //       'Content-Type': 'application/json'
-      //     }
-      //   };
-
-      //   const body = JSON.stringify(newUser);
-
-      //   const res = await axios.post('/api/users', body, config);
-
-      //   console.log(res.data);
-      // } catch (err) {
-      //   console.error(err.response.data);
-      // }
     }
   };
 
@@ -57,7 +35,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
     <Fragment>
       <h1 className='large text-primary'>Sign Up</h1>
       <p className='lead'>
-        <i className='fas fa-user'></i> Create Your Account
+        <i className='fas fa-user' /> Create Your Account
       </p>
       <form className='form' onSubmit={e => onSubmit(e)}>
         <div className='form-group'>
@@ -67,7 +45,6 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
             name='name'
             value={name}
             onChange={e => onChange(e)}
-            required
           />
         </div>
         <div className='form-group'>
@@ -77,7 +54,6 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
             name='email'
             value={email}
             onChange={e => onChange(e)}
-            required
           />
           <small className='form-text'>
             This site uses Gravatar so if you want a profile image, use a
@@ -91,7 +67,6 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
             name='password'
             value={password}
             onChange={e => onChange(e)}
-            minLength='6'
           />
         </div>
         <div className='form-group'>
@@ -101,7 +76,6 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
             name='password2'
             value={password2}
             onChange={e => onChange(e)}
-            minLength='6'
           />
         </div>
         <input type='submit' className='btn btn-primary' value='Register' />

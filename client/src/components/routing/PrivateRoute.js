@@ -24,8 +24,8 @@ PrivateRoute.propTypes = {
   auth: PropTypes.object.isRequired
 };
 
-const mapStateToProp = state => ({
+const mapStateToProps = state => ({
   auth: state.auth
 });
 
-export default connect(mapStateToProp)(PrivateRoute);
+export default connect(mapStateToProps)(PrivateRoute);
